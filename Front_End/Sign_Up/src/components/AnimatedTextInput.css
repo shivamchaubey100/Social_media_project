@@ -1,0 +1,51 @@
+:root {
+    --placeholder-animation: scale(0.9) translateX(-1.2rem) translateY(-2rem);
+}
+
+label {
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    bottom: 2rem;
+    left: 0.5rem;
+
+    transition: 0.3s;
+}
+
+input {
+    position: relative;
+    margin: 5px 0;
+    padding: 5px;
+
+    width: 100%;
+
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    color: white;
+
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+input.dark {
+    background-color: #7f7e7e;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:focus + label {
+    display: block;
+    position: relative;
+
+    transform: var(--placeholder-animation);
+}
+
+input:valid + label {
+    display: block;
+    position: relative;
+
+    transform: var(--placeholder-animation);
+}
