@@ -64,7 +64,7 @@ ROOT_URLCONF = 'Instigram.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.abspath(os.path.join(BASE_DIR), '..', 'Front_End/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
