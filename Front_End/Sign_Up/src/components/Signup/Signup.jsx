@@ -9,6 +9,7 @@ function Inputs({ signup, darkMode }) {
                 <AnimatedTextInput placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
 
                 <br />
+                
                 <AnimatedTextInput placeholder="Password" name="password" id="password" type="password" autoComplete="current-password" darkMode={ darkMode } />
             </>
         )
@@ -28,7 +29,7 @@ function Inputs({ signup, darkMode }) {
     }
 }
 
-export default function Signup({ darkMode }) {
+export default function Signup({ darkMode, userData }) {
 
     const [signup, setSignup] = useState(false);
     
