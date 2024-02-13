@@ -8,7 +8,9 @@
 }
 
 label {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     position: relative;
     z-index: 1;
 
@@ -57,4 +59,28 @@ input:valid + label {
     position: relative;
 
     transform: var(--placeholder-animation);
+}
+
+.eye {
+    width: 20px;
+    height: 20px;
+
+    position: relative;
+    left: 13.5rem;
+    bottom: 3.25rem;
+
+    z-index: 2;
+}
+
+.eye:hover {
+    cursor: pointer;
+}
+
+.eye img {
+    width: 100%;
+    height: 100%;
+}
+
+.eye img.dark {
+    display: none;
 }

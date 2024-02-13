@@ -6,21 +6,23 @@ function Inputs({ signup, darkMode }) {
     if (!signup) {
         return (
             <>
-                <AnimatedTextInput placeholder="Username" id="username" type="text" darkMode={darkMode} />
+                <AnimatedTextInput placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
 
                 <br />
-                <AnimatedTextInput placeholder="Password" id="password" type="password" darkMode={darkMode} />
+                <AnimatedTextInput placeholder="Password" name="password" id="password" type="password" autoComplete="current-password" darkMode={ darkMode } />
             </>
         )
     }
     else {
         return (
             <>
-                <AnimatedTextInput placeholder="Roll No." id="roll" type="text" maxLength="7" darkMode={darkMode} />
+                <AnimatedTextInput placeholder="Roll No." name="roll" id="roll" type="text" maxLength="7" darkMode={ darkMode } />
                 <br />
-                <AnimatedTextInput placeholder="Username" id="username" type="text" darkMode={darkMode} />
+                <AnimatedTextInput placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
                 <br />
-                <AnimatedTextInput placeholder="Password" id="password" type="password" darkMode={darkMode} />
+                <AnimatedTextInput placeholder="Password" name="password" id="password" type="password" autoComplete="new-password" darkMode={ darkMode } />
+                <br />
+                <AnimatedTextInput placeholder="Confirm Password" name="confirm" id="confirm" type="password" autoComplete="new-password" darkMode={ darkMode } />
             </>
         )
     }
@@ -28,7 +30,7 @@ function Inputs({ signup, darkMode }) {
 
 export default function Signup({ darkMode }) {
 
-    const [signup, setSignup] = useState("false");
+    const [signup, setSignup] = useState(false);
     
     return (
         <div className={ darkMode ? "signup darkMode" : "signup"}>
