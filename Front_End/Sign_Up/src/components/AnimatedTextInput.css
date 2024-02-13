@@ -1,5 +1,10 @@
 :root {
     --placeholder-animation: scale(0.9) translateX(-1.2rem) translateY(-2rem);
+
+    --input-color: black;
+    --input-color-dark: white;
+    --input-background-color: white;
+    --input-background-color-dark: #7f7e7e;
 }
 
 label {
@@ -22,14 +27,18 @@ input {
 
     font-size: 1.1rem;
     line-height: 1.5rem;
-    color: white;
+    color: var(--input-color);
 
-    border: 1px black solid;
+    background-color: var(--input-background-color);
+    border: 1px var(--input-color) solid;
     border-radius: 5px;
 }
 
 input.dark {
-    background-color: #7f7e7e;
+    background-color: var(--input-background-color-dark);
+    color: var(--input-color-dark); 
+
+    border: 1px var(--input-color-dark) solid;
 }
 
 input:focus {

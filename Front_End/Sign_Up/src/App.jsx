@@ -1,8 +1,9 @@
 import Card from './components/Card.jsx';
 import Signup from './components/Signup.jsx';
-import './App.css';
-import { useEffect, useState } from 'react';
 import DarkModeSwitch from './components/DarkModeSwitch.jsx';
+import './App.css';
+import './mediaqueries.css';
+import { useEffect, useState } from 'react';
 
 function App() {
   

@@ -3,6 +3,16 @@
   --background-color-dark: #050607;
   --border-color: black;
   --border-color-dark: white;
+
+  --underline-color: rgba(0,0,0,0.6);
+  --underline-color-dark: rgba(255,255,255,0.6);
+
+  --button-color: cyan;
+  --button-dark-color: cyan;
+
+  --link-color: #0279D3;
+
+  --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 * {
@@ -13,7 +23,9 @@
 body {
   background-color: var(--background-color);
   color: var(--background-color-dark);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--font-family);
+
+  overflow: hidden;
 }
 
 body.darkMode {
@@ -44,7 +56,7 @@ body.darkMode {
 }
 
 #signup-card {
-  width: 25%;
+  width: 300px;
 }
 
 .signup {
@@ -55,7 +67,7 @@ body.darkMode {
   font-size: 2rem;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-decoration-color: rgba(0,0,0,0.6);
+  text-decoration-color: var(--underline-color);
   text-underline-offset: 5px;
   word-spacing: 5px;
   letter-spacing: 1px;
@@ -65,6 +77,10 @@ body.darkMode {
   align-items: center;
 
   margin: 2rem 0;
+}
+
+.signup-title.dark {
+  text-decoration-color: var(--underline-color-dark);
 }
 
 .submit-div {
@@ -81,11 +97,15 @@ body.darkMode {
   padding: 0.5rem;
 
   opacity: 0.7;
-  background-color: cyan;
+  background-color: var(--button-color);
   border: none;
   border-radius: 5px;
 
   transition: 0.2s;
+}
+
+.submit.dark {
+  background-color: var(--button-dark-color);
 }
 
 .submit:hover {
@@ -107,7 +127,7 @@ body.darkMode {
 }
 
 a {
-  color: #0279D3;
+  color: var(--link-color);
 }
 
 a:hover {
