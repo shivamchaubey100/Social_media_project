@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AnimatedTextInput from "./AnimatedTextInput";
+import AnimatedTextInput from "../AnimatedTextInput/AnimatedTextInput";
 
 function Inputs({ signup, darkMode }) {
 

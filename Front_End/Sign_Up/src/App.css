@@ -43,18 +43,6 @@ body.darkMode {
   width: 100vw;
 }
 
-.card {
-  border: var(--border-color) solid 2px;
-  border-radius: 1rem;
-
-  width: fit-content;
-  padding: 1rem;
-}
-
-.card.darkMode {
-  border: var(--border-color-dark) solid 2px;
-}
-
 #signup-card {
   width: 300px;
 }

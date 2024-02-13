@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import './AnimatedTextInput.css';
 
-import eye from './../assets/eye-solid.svg';
-import eyeSlash from './../assets/eye-slash-solid.svg';
+import eye from './../../assets/eye-solid.svg';
+import eyeSlash from './../../assets/eye-slash-solid.svg';
 
-import eyeDark from './../assets/eye-solid-dark.svg';
-import eyeSlashDark from './../assets/eye-slash-solid-dark.svg';
+import eyeDark from './../../assets/eye-solid-dark.svg';
+import eyeSlashDark from './../../assets/eye-slash-solid-dark.svg';
 
 
 export default function AnimatedTextInput({ placeholder, id, type, darkMode, name, ...rootAttributes }) {
