@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 import AnimatedTextInput from "../AnimatedTextInput/AnimatedTextInput";
+import './Signup.css'
 
-export default function Signup({ darkMode, handleSubmit, userCount, setUserCount }) {
+export default function Signup({ darkMode, handleSubmit }) {
 
+    const [show, setShow] = useState(false);
+    const [equal, setEqual] = useState(true);
     
+    function checkEqual(){
+        const password = document.getElementsByName('password')[0].value;
+        const confirm = document.getElementsByName('confirm')[0].value;
+
+        setEqual(password == confirm);
+    }
+
     return (
         <div className={ darkMode ? "signup darkMode" : "signup"}>
-            <form className="signup-form" onSubmit={(e) => {
-                setUserCount(userCount + 1);
-                handleSubmit(e);
-                }}>
+            <form className="signup-form" onSubmit={(e) => handleSubmit(e)}>
                 <div className={ darkMode ? "signup-title dark" : "signup-title"}>
                     Sign Up
                 </div>
@@ -17,12 +24,13 @@ export default function Signup({ darkMode, handleSubmit, userCount, setUserCount
                 <div className="inputs">
                     <>
                         <AnimatedTextInput defaultValue="" placeholder="Roll No." name="roll" id="roll" type="text" maxLength="7" darkMode={ darkMode } />
-                        <br />
+
                         <AnimatedTextInput defaultValue="" placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
-                        <br />
-                        <AnimatedTextInput defaultValue="" placeholder="Password" name="password" id="password" type="password" autoComplete="new-password" darkMode={ darkMode } />
-                        <br />
-                        <AnimatedTextInput defaultValue="" placeholder="Confirm Password" name="confirm" id="confirm" type="password" autoComplete="new-password" darkMode={ darkMode } />
+
+                        <AnimatedTextInput defaultValue="" placeholder="Password" name="password" id="password" type="password" autoComplete="new-password" darkMode={ darkMode } show={ show } setShow={ setShow } />
+
+                        <AnimatedTextInput defaultValue="" placeholder="Confirm Password" name="confirm" id="confirm" type="password" autoComplete="new-password" darkMode={ darkMode } show={ show } setShow={ setShow }
+                        onChange={ checkEqual } className={ equal ? "" : "error"} />
                     </>
                 </div>
 

@@ -8,8 +8,7 @@ import eyeDark from './../../assets/eye-solid-dark.svg';
 import eyeSlashDark from './../../assets/eye-slash-solid-dark.svg';
 
 
-export default function AnimatedTextInput({ placeholder, id, type, darkMode, name, ...rootAttributes }) {
-    const [show, setShow] = useState(false)
+export default function AnimatedTextInput({ placeholder, id, type, darkMode, name, show, setShow, ...rootAttributes }) {
 
     if ( type == "password") {
         return (
