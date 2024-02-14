@@ -8,21 +8,40 @@ import { useEffect, useState } from 'react';
 function App() {
   
   const [darkMode,setDarkMode] = useState(false);
-  const [userData, setUserData] = useState({
-    username: "",
-    rollNo: "",
-    email: "",
-    password: "",
-  })
+  const [userCount, setUserCount] = useState(0);
 
   useEffect(() => {
     document.body.classList.toggle('darkMode', darkMode);
   },[darkMode])
 
+  useEffect(() => {
+    fetch("server-name")
+      .then(async function(res) {
+        const json = await res.json();
+        setUserCount(json.userCount);
+      })
+  })
+
+  function handleSubmit(e) {
+    const formData = new FormData(e.target);
+
+    const data = {
+      username: formData.get('username'),
+      password: formData.get('password'),
+      roll: formData.get('roll'),
+      confirm: formData.get('confirm'),
+      userId: userCount
+    }
+
+    console.log(data)
+
+    e.preventDefault();
+  }
+
   return (
     <div className='main'>
       <Card darkMode={ darkMode } id='signup-card'>
-        <Signup darkMode = { darkMode } userData={ userData }></Signup>
+        <Signup darkMode = { darkMode } handleSubmit={ handleSubmit } userCount={ userCount } setUserCount={ setUserCount }></Signup>
       </Card>
 
       <DarkModeSwitch darkMode={ darkMode } onChange={() => {setDarkMode(!darkMode)}}></DarkModeSwitch>
