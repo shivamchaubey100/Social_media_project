@@ -30,12 +30,12 @@ export default function Signup({ darkMode, handleSubmit }) {
                         <AnimatedTextInput defaultValue="" placeholder="Password" name="password" id="password" type="password" autoComplete="new-password" darkMode={ darkMode } show={ show } setShow={ setShow } />
 
                         <AnimatedTextInput defaultValue="" placeholder="Confirm Password" name="confirm" id="confirm" type="password" autoComplete="new-password" darkMode={ darkMode } show={ show } setShow={ setShow }
-                        onChange={ checkEqual } className={ equal ? "" : "error"} />
+                        equal={ equal } onChange={ checkEqual } className={ equal ? "" : "error"} />
                     </>
                 </div>
 
                 <div className="submit-div">
-                    <button type="submit" className={ darkMode ? "submit dark" : "submit"}>Sign Up</button>
+                    <button type="submit" className={ darkMode ? "submit dark" : "submit"} id={ equal ? "" : "prohibited"}>Sign Up</button>
                 </div>
 
                 <hr />

@@ -17,35 +17,42 @@ function App() {
     fetch("server-name")
       .then(async function(res) {
         const json = await res.json();
-        userCount = json.users.length;
+        userCount = json.userCount;
       })
   },[])
 
   function handleSubmit(e) {
-    const formData = new FormData(e.target);
+    const pass = document.getElementsByName('password')[0].value;
+    const confirm = document.getElementsByName('confirm')[0].value;
 
-    const data = {
-      username: formData.get('username'),
-      password: formData.get('password'),
-      roll: formData.get('roll'),
-      // confirm: formData.get('confirm'),
-      userId: userCount + 1,
-    }
+    if (pass == confirm) {
+      const formData = new FormData(e.target);
 
-    console.log(JSON.stringify(data));
+      const data = {
+        username: formData.get('username'),
+        password: formData.get('password'),
+        roll: formData.get('roll'),
+        // confirm: formData.get('confirm'),
+        userId: userCount + 1,
+      }
 
-    e.preventDefault();
+      console.log(JSON.stringify(data));
 
-    fetch("server-name", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify(data),
-    })
-      .then(async function(res) {
-        const json = await res.json();
+      e.preventDefault();
+
+      fetch("server-name", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(data),
       })
+        .then(async function(res) {
+          const json = await res.json();
+        })
+    } else {
+      e.preventDefault()
+    }
   }
 
   return (
