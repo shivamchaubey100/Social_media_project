@@ -8,21 +8,57 @@ import { useEffect, useState } from 'react';
 function App() {
   
   const [darkMode,setDarkMode] = useState(false);
-  const [userData, setUserData] = useState({
-    username: "",
-    rollNo: "",
-    email: "",
-    password: "",
-  })
 
   useEffect(() => {
     document.body.classList.toggle('darkMode', darkMode);
   },[darkMode])
 
+  useEffect(() => {
+    fetch("server-name")
+      .then(async function(res) {
+        const json = await res.json();
+        userCount = json.userCount;
+      })
+  },[])
+
+  function handleSubmit(e) {
+    const pass = document.getElementsByName('password')[0].value;
+    const confirm = document.getElementsByName('confirm')[0].value;
+
+    if (pass == confirm) {
+      const formData = new FormData(e.target);
+
+      const data = {
+        username: formData.get('username'),
+        password: formData.get('password'),
+        roll: formData.get('roll'),
+        // confirm: formData.get('confirm'),
+        userId: userCount + 1,
+      }
+
+      console.log(JSON.stringify(data));
+
+      e.preventDefault();
+
+      fetch("server-name", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(data),
+      })
+        .then(async function(res) {
+          const json = await res.json();
+        })
+    } else {
+      e.preventDefault()
+    }
+  }
+
   return (
     <div className='main'>
       <Card darkMode={ darkMode } id='signup-card'>
-        <Signup darkMode = { darkMode } userData={ userData }></Signup>
+        <Signup darkMode = { darkMode } handleSubmit={ handleSubmit }></Signup>
       </Card>
 
       <DarkModeSwitch darkMode={ darkMode } onChange={() => {setDarkMode(!darkMode)}}></DarkModeSwitch>

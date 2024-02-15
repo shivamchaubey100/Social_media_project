@@ -1,57 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimatedTextInput from "../AnimatedTextInput/AnimatedTextInput";
+import './Signup.css'
 
-function Inputs({ signup, darkMode }) {
+export default function Signup({ darkMode, handleSubmit }) {
 
-    if (!signup) {
-        return (
-            <>
-                <AnimatedTextInput placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
-
-                <br />
-                <AnimatedTextInput placeholder="Password" name="password" id="password" type="password" autoComplete="current-password" darkMode={ darkMode } />
-            </>
-        )
-    }
-    else {
-        return (
-            <>
-                <AnimatedTextInput placeholder="Roll No." name="roll" id="roll" type="text" maxLength="7" darkMode={ darkMode } />
-                <br />
-                <AnimatedTextInput placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
-                <br />
-                <AnimatedTextInput placeholder="Password" name="password" id="password" type="password" autoComplete="new-password" darkMode={ darkMode } />
-                <br />
-                <AnimatedTextInput placeholder="Confirm Password" name="confirm" id="confirm" type="password" autoComplete="new-password" darkMode={ darkMode } />
-            </>
-        )
-    }
-}
-
-export default function Signup({ darkMode }) {
-
-    const [signup, setSignup] = useState(false);
+    const [show, setShow] = useState(false);
+    const [equal, setEqual] = useState(true);
     
+    function checkEqual(){
+        const password = document.getElementsByName('password')[0].value;
+        const confirm = document.getElementsByName('confirm')[0].value;
+
+        setEqual(password == confirm);
+    }
+
     return (
         <div className={ darkMode ? "signup darkMode" : "signup"}>
-            <form signup={ signup } className="signup-form" method="POST">
+            <form className="signup-form" onSubmit={(e) => handleSubmit(e)}>
                 <div className={ darkMode ? "signup-title dark" : "signup-title"}>
-                    { signup ? "Sign Up" : "Log In" }
+                    Sign Up
                 </div>
                 
                 <div className="inputs">
-                    <Inputs signup={ signup } darkMode={ darkMode }></Inputs>
+                    <>
+                        <AnimatedTextInput defaultValue="" placeholder="Roll No." name="roll" id="roll" type="text" maxLength="7" darkMode={ darkMode } />
+
+                        <AnimatedTextInput defaultValue="" placeholder="Username" name="username" id="username" type="text" autoComplete="name" darkMode={ darkMode } />
+
+                        <AnimatedTextInput defaultValue="" placeholder="Password" name="password" id="password" type="password" autoComplete="new-password" darkMode={ darkMode } show={ show } setShow={ setShow } />
+
+                        <AnimatedTextInput defaultValue="" placeholder="Confirm Password" name="confirm" id="confirm" type="password" autoComplete="new-password" darkMode={ darkMode } show={ show } setShow={ setShow }
+                        equal={ equal } onChange={ checkEqual } className={ equal ? "" : "error"} />
+                    </>
                 </div>
 
                 <div className="submit-div">
-                    <button type="submit" className={ darkMode ? "submit dark" : "submit"}>{ signup ? "Sign Up" : "Log In" }</button>
+                    <button type="submit" className={ darkMode ? "submit dark" : "submit"} id={ equal ? "" : "prohibited"}>Sign Up</button>
                 </div>
 
                 <hr />
                 
                 <div className="text-div">
-                    <p className="text">{ signup ? "Already have an account?" : "New to Instigram?"}</p>
-                    <a onClick={() => {setSignup(!signup)}}>{ signup ? "Log In" : "Sign Up"}</a>
+                    <p className="text">Already have an Account?</p>
+                    <a>Log In</a>
                 </div>
             </form>
         </div>
